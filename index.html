@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Thumbnail</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="author" content="Luan Semensato">
+  <link rel="stylesheet" href="dist/styles/app.min.css" media="all">
+</head>
+
+<body>
+  <div class="config">
+    <h1>Gerador de Thumbnail</h1>
+    <h2>Selecione uma imagem <small>(Tamanho recomendado: 1280x720px)</small></h2>
+    <input type="file" id="trigger-image-preview">
+
+    <div class="group hidden">
+      <h2>Conteúdo</h2>
+      <input type="text" id="trigger-text-1" placeholder="Texto - Linha 1" maxlength="22">
+      <input type="text" id="trigger-text-2" placeholder="Texto - Linha 2" maxlength="15">
+
+      <div class="options">
+        <h2>Máscara</h2>
+        <label><input type="radio" name="mask" id="mask-red" value="red" checked> Vermelho</label>
+        <label><input type="radio" name="mask" id="mask-green" value="green"> Verde</label>
+        <label><input type="radio" name="mask" id="mask-blue" value="blue"> Azul</label>
+      </div>
+
+      <div class="options">
+        <h2>Posição do Logo</h2>
+        <label><input type="radio" name="logo" id="logo-left" value="left"> Esquerda</label>
+        <label><input type="radio" name="logo" id="logo-right" value="right" checked> Direita</label>
+      </div>
+
+      <button id="trigger-save" class="button" title="Salvar">Salvar</button>
+    </div>
+  </div>
+
+  <div id="thumbnail" class="hidden">
+    <div class="text">
+      <span class="title" id="get-text-1"># Texto linha 1</span>
+      <span class="title" id="get-text-2"># Texto linha 2</span>
+    </div>
+    <span id="get-logo" class="logo logo-right"></span>
+    <span id="get-mask" class="mask-red"></span>
+    <img src="" id="get-image" class="image">
+  </div>
+
+  <script src="dist/scripts/app.min.js"></script>
+</body>
+</html>

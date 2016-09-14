@@ -1,0 +1,20 @@
+{
+  "name": "thumbnail",
+  "version": "1.0.0",
+  "main": "scripts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luan Semensato",
+  "license": "ISC",
+  "description": "Thumbnail generator for YouTube videos",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-if": "^1.2.5"
+  }
+}

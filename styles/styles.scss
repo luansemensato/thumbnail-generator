@@ -1,0 +1,271 @@
+/*!
+ * Thumbnail Generator
+ * http://www.luansemensato.com.br
+ *
+ * Copyright 2016, Luan Semensato
+ * http://www.luansemensato.com.br
+ * Released under the MIT license
+ */
+
+
+// @import "base/variables";
+// @import "base/reset";
+// @import "base/util";
+// @import "base/typography";
+
+
+// VARIABLES
+$font: 'Montserrat-Bold', Arial, Helvetica, sans-serif;
+
+// Colors
+$primary:       #d2232a;
+$primary-hover: #a10000;
+
+$gray:          #363636;
+$gray-light:    #b1b1b1;
+$gray-lighter:  #f1f1f1;
+
+
+// RESET
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+*{
+  -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+        box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: Arial, Sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+small{
+  font-size: 11px;
+}
+
+
+// UTIL
+.hidden{
+  display: none;
+}
+
+.block{
+  display: block;
+}
+
+
+// TYPOGRAPGY
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('../../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),  url('../../fonts/Montserrat-Bold.otf')  format('opentype'),
+       url('../../fonts/Montserrat-Bold.woff') format('woff'), url('../../fonts/Montserrat-Bold.ttf')  format('truetype'), url('../../fonts/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2{
+  clear: both;
+  display: block;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+  color: $gray;
+}
+
+h1{
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: $primary;
+}
+
+h2{
+  font-size: 16px;
+
+  small{
+    margin-left: 5px;
+    font-weight: normal;
+  }
+}
+
+
+// COMPONENTS
+#thumbnail{
+  width: 1280px;
+  height: 720px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+
+  .logo-left,
+  .logo-right{
+    width: 350px;
+    height: 100px;
+    z-index: 3;
+    top: 50px;
+    position: absolute;
+    background: url('../../images/logo.png') no-repeat;
+  }
+
+  .logo-right{
+    right: 0;
+  }
+
+  .logo-left{
+    left: 0;
+  }
+
+  .text{
+    padding: 0 65px;
+    bottom: 70px;
+    left: 0;
+    position: absolute;
+    display: block;
+    border: none;
+    z-index:5;
+
+    .title{
+      font-weight: bold;
+      font-size: 100px;
+      line-height: 110px;
+      letter-spacing: -3px;
+      color: #fff;
+      display: block;
+      clear: both;
+      border: none;
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
+      font-family: $font;
+    }
+  }
+
+  .mask-red,
+  .mask-green,
+  .mask-blue{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  .mask-red{
+    background: url('../../images/mask-red.png') no-repeat;
+  }
+
+  .mask-green{
+    background: url('../../images/mask-green.png') no-repeat;
+  }
+
+  .mask-blue{
+    background: url('../../images/mask-blue.png') no-repeat;
+  }
+
+  .image{
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: block;
+    border: none;
+    position: absolute;
+  }
+}
+
+.config{
+  width: 100%;
+  padding: 30px;
+  margin-bottom: 30px;
+  float: left;
+  background-color: $gray-lighter;
+
+  .group{
+    margin-top: 30px;
+
+    .options{
+      margin: 30px 0;
+      font-size: 14px;
+
+      label{
+        margin-right: 15px;
+      }
+    }
+
+    input[type=text]{
+      padding: 10px;
+      border: 1px solid #ddd;
+      outline: none;
+      transition: all .2s linear;
+
+      &.first{
+        margin-right: 30px;
+      }
+
+      &:focus{
+        border: 1px solid $gray-light;
+      }
+    }
+
+    button{
+      padding: 15px 35px;
+      color: #fff;
+      border: 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      outline: none;
+      border-radius: 6px;
+      border: 1px solid $primary-hover;
+      background-color: $primary;
+      transition: all .2s linear;
+
+      &:hover{
+        background-color: $primary-hover;
+      }
+    }
+  }
+}
